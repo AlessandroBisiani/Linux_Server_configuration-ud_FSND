@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% from 'macros.html' import page_header_macro, nav_macro, notes_macro %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+</head>
+<body>
+    <div class="main-wrapper">
+
+            <div class="header">
+                <h1 class="header__title">Bulletin</h1>
+                <a href="{{ url_for('show_categories') }}">Back to Home</a>
+            </div>
+
+        <div id="result">
+            <p>Something went wrong!</p>
+        </div>
+    </div>
+</body>
+</html>

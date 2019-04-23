@@ -1,0 +1,10 @@
+
+.venv/
+notes.db
+.env
+client_secrets.json
+keys.txt
+.DS_Store
+instance
+.pytest_cache
+__pycache__

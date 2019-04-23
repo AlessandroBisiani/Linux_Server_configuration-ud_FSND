@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% from 'macros.html' import page_header_macro, nav_macro, notes_macro %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete Post</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+</head>
+<body>
+    <div class="main-wrapper">
+        {{ page_header_macro(user_name) }}
+        <div id="result"></div>
+        {{ nav_macro(categories) }}
+        <div class="notes">
+            <p>Are you sure you want to delete {{ note.title }}?</p>
+            <form action="{{ url_for('delete_note', category_name=note.category_name, id=note.id) }}", method="POST">
+                <input type="submit" name="deleteButton" value="Yes, Delete">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% from 'macros.html' import page_header_macro, nav_macro, notes_macro%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+</head>
+<body>
+    <div class="main-wrapper">
+        {{ page_header_macro(user_name) }}
+        <div id="result"></div>
+        {{ nav_macro(categories) }}
+        <div class="notes">
+            <h2>Editing {{ note.title }}</h2>
+            <form action="{{ url_for('edit_note', category_name=note.category_name, id=note.id) }}" method="POST">
+                <p>Title:</p>
+                <input type="text" name="title" size="60" value="{{ note.title }}" required>
+                <p>Post Body:</p>
+                <textarea name="body" cols="70" rows="26" required>{{ note.body }}</textarea>
+                <br>
+                <input type="submit" value="Submit Changes">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

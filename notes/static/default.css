@@ -1,0 +1,261 @@
+/*
+Adapted by Alessandro Bisiani from the original:
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+/* border: solid 1px #ee3e64; */
+/* #44accf sky blue*/
+/* #b7d84b */
+/* #ec008c hot pink*/
+/* #ffa719; Bright orange */
+/* #fc6767 Light orange */
+/* #12a7d light blue */
+/* #00e8b9 bright teal */
+/* #fcfcfc grey */
+/* #262626; dark grey /
+/* #505050; lighter dark grey */
+
+/*
+color: #ee3e64;
+color: #fd5d93; salmon
+text-shadow: 0px 4px 3px rgba(0,0,0,0.1),
+                0px 8px 13px rgba(0,0,0,0.1),
+                0px 18px 23px rgba(0,0,0,0.1);
+*/
+
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:16px;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 1.6;
+    background-color: #fcfcfc;
+    font-family: "Lora", "Courier New", Courier, monospace;
+    height: 100%;
+    background-color: rgb(255, 164, 38);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    /* font-family: "Staatliches", Verdana, Geneva, sans-serif; */
+    margin-bottom: 0.5em;
+    color: #ee3e64;
+}
+/* h2 {
+    font-size: 150%;
+}
+h3 {
+    font-size: 130%;
+}
+h4 {
+    font-size: 120%;
+    text-decoration: underline;
+}
+h5 {
+    font-size: 110%;
+    text-decoration: underline;
+}
+h6 {
+    font-size: 100%;
+    text-decoration: underline;
+} */
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: inherit;
+    text-decoration: none;
+    /* color: #ffa719;
+    color: #ee3e64;
+    color: #fd5d93;
+    color: #44accf; */
+    color: #ffe819;
+    color: #ee3e64;
+    border-bottom: #fd5d93;
+}
+a:hover{
+    /* text-decoration: underline #fd5d93;
+    text-decoration: underline #8e00cf; */
+    background-color: #9000d346;
+    /* color: #44accf;
+    color: violet;
+    color: #ee3e64;
+    color: #fd5d93; */
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    /* border-bottom:1px dotted; */
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align: middle;
+}
+
+
+main{
+    grid-area: main;
+}
+
+article{
+    margin-bottom: 5em;
+}
+
+p {
+    margin-top: 1em;
+}
+
+li{
+    list-style: none inside;
+    margin-bottom:0.1em;
+}
+
+.header {
+    width: 100vw;
+    height: 5rem;
+    position: fixed;
+    top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: rgba(255, 66, 157, 0.4); */
+    background-color: rgba(255,124,85, 1.0);
+    /* color: #FF7C55;
+    color: #FFA425; */
+    padding: 1rem 2rem;
+    /* align-content: center; */
+}
+    .header__title {
+        display: flex;
+        margin: 0;
+        font-size: 3rem;
+    }
+    .header__signinlink {
+        display: flex;
+        /* align-self: center; */
+    }
+    #signinbutton {
+        display: flex;
+        max-width: 15vw;
+    }
+
+.nav {
+    grid-area: nav;
+    display: flex;
+    height: auto;
+    flex-direction: column;
+}
+
+.notes {
+    grid-area: notes;
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgb(255, 164, 38); */
+}
+
+.notes__heading {
+    display: flex;
+}
+
+.heading{
+    margin: 0 1.5rem 4px 0;
+}
+
+#result {
+    grid-area: flash;
+}
+
+.main-wrapper {
+    display: grid;
+    width: 98vw;
+    grid-template-columns: 2rem 30% auto 2rem;
+    grid-template-rows: 4rem 3rem auto 4rem;
+    row-gap: 2em;
+    grid-template-areas:
+        "header header  header  header"
+        ".      flash   flash   ."
+        ".      nav     notes   ."
+        ".      .       .       ."
+}

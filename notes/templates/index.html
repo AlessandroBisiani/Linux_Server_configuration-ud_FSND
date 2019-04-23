@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% from 'macros.html' import page_header_macro, nav_macro, notes_macro %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+</head>
+<body>
+    <div class="main-wrapper">
+        {{ page_header_macro(user_name) }}
+        <div id="result"></div>
+        {{ nav_macro(categories) }}
+
+        <div class="notes">
+            <h2>Notes</h2>
+            <ul>
+                {% for note in notes %}
+                    <li><a href="{{ url_for('show_note', category_name=note.category_name, id=note.id) }}">{{ note.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+

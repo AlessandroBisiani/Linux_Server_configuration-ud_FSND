@@ -1,0 +1,98 @@
+
+{% macro page_header_macro(user_name) %}
+<div class="header">
+    <h1 class="header__title"><a href="/">Bulletin</a></h1>
+    {% if user_name != 'Guest' %}
+        <a class="header__signinlink" href="{{ url_for('gdisconnect') }}">Log Out, {{ user_name }}</a>
+    <!-- <button class="header__signinbutton" id="signinButton">Google Signin</button> -->
+    {% endif %}
+    {% if user_name == 'Guest' %}
+        <a class="header__signinlink" href="{{ url_for('show_login') }}">Sign In With Google</a>
+    {% endif%}
+</div>
+{% endmacro %}
+
+
+{% macro nav_macro(categories) %}
+<div class="nav">
+    <h2>Categories</h2>
+    <ul>
+        {% for cat in categories %}
+        <li>
+            <a href="{{ url_for('show_notes', category_name=cat.name) }}">{{cat.name}}</a>
+            <a href="{{ url_for('new_note', category_name=cat.name) }}">+</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endmacro %}
+
+
+{% macro notes_macro(notes, category) %}
+<div class="notes">
+    <div class="notes__heading">
+        <h2 class="heading">Notes</h2>
+        <div><a href="{{ url_for('new_note', category_name=category) }}">Add Note</a></div>
+    </div>
+    <ul>
+        {% for note in notes %}
+            <li><a href="{{ url_for('show_note', category_name=category, id=note.id) }}">{{ note.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endmacro %}
+
+
+{% macro gauth_init(client_id) %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+<script>
+    function start() {
+        gapi.load('auth2', function() {
+            auth2 = gapi.auth2.init({
+                scope: 'openid email profile',
+                client_id: '{{client_id}}',
+                redirecturi: "postmessage",
+                accesstype: "offline",
+                cookiepolicy: "single_host_origin",
+                callback: "signInCallback",
+                approvalprompt: "force"
+            });
+        });
+    }
+</script>
+{% endmacro %}
+
+
+{% macro gauth_func(STATE) %}
+<script>
+    $('#signinButton').click(function() {
+        function signInCallback(authResult){
+            if (authResult['code']){
+                $('#signinButton').attr('style', 'display: none');
+                $.ajax({
+                type: 'POST',
+                url: '/gconnect?state={{STATE}}',
+                headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+                },
+                contentType: 'application/octet-stream; charset=utf-8',
+                success:function(result){
+                    $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+                        setTimeout(function() {
+                        window.location.href = "/";
+                        }, 2000);
+                },
+                processData:false,
+                data:authResult['code']
+                });
+            } else{
+                // handle error
+                console.log('There was an error: ' + authResult['error']);
+                $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+            }
+        }
+        auth2.grantOfflineAccess().then(signInCallback);
+    });
+</script>
+{% endmacro %}

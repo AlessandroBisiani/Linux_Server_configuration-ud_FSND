@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% from 'macros.html' import page_header_macro, nav_macro, notes_macro, gauth_init, gauth_func %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {{ gauth_init(client_id) }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+</head>
+<body>
+    <div class="main-wrapper">
+
+        <!-- Does not use header and notes-grid-area macros -->
+        <div class="header">
+            <h1 class="header__title">Bulletin</h1>
+            <div id="result"></div>
+        </div>
+
+        {{ nav_macro(categories) }}
+
+        <div class="notes">
+            <p>To sign in with your <strong>Google account</strong>, click "Sign In":</p>
+            <button class="header__signinbutton" id="signinButton">Sign In With Google</button>
+        </div>
+
+    </div>
+    {{ gauth_func(STATE) }}
+</body>
+</html>

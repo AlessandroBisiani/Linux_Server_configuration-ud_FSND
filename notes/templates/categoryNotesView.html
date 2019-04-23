@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% from 'macros.html' import page_header_macro, nav_macro, notes_macro, gauth_init, gauth_func %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+</head>
+<body>
+    <div class="main-wrapper">
+        {{ page_header_macro(user_name) }}
+        <div id="result"></div>
+        {{ nav_macro(categories) }}
+        {{ notes_macro(notes, category_name) }}
+    </div>
+</body>
+</html>
