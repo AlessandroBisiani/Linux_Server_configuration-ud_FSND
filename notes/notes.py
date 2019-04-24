@@ -42,15 +42,6 @@ APPLICATION_NAME = "Restaurant Menu Application"
 google_client_key = getenv('GOOGLE_CLIENT_ID')
 app_secret = getenv('APP_SECRET')
 
-# with open('keys.txt', 'r') as f:
-#     keys = f.read()
-#     for k in keys.split(' '):
-#         if k.startswith('client_id'):
-#             google_client_key = k.split('=')[-1]
-#         elif k.startswith('app_secret'):
-#             app_secret = k.split('=')[-1]
-
-
 ''' Create the engine, which is the connection source, then using same
 Base (the same orm heirarchy!) as databse_setup, tie the connection supplier
 to the base.'''
@@ -648,6 +639,5 @@ def verify_login(session):
 
 
 if __name__ == '__main__':
-    app.secret_key = app_secret
-    # app.run(host='0.0.0.0', port=80, debug=True)
+    # app.secret_key = app_secret
     app.run(host='0.0.0.0', port=80)
