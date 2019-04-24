@@ -1,4 +1,5 @@
 
+notesenv/
 .venv/
 notes.db
 .env
